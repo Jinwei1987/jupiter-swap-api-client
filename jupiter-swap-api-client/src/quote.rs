@@ -10,29 +10,6 @@ use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use solana_sdk::pubkey::Pubkey;
 
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
-#[serde(rename_all = "camelCase")]
-/// Swap information of each Swap occurred in the route paths
-pub struct SwapInfo {
-    #[serde(with = "field_as_string")]
-    pub amm_key: Pubkey,
-    pub label: String,
-    #[serde(with = "field_as_string")]
-    pub input_mint: Pubkey,
-    #[serde(with = "field_as_string")]
-    pub output_mint: Pubkey,
-    /// An estimation of the input amount into the AMM
-    #[serde(with = "field_as_string")]
-    pub in_amount: u64,
-    /// An estimation of the output amount into the AMM
-    #[serde(with = "field_as_string")]
-    pub out_amount: u64,
-    #[serde(with = "field_as_string")]
-    pub fee_amount: u64,
-    #[serde(with = "field_as_string")]
-    pub fee_mint: Pubkey,
-}
-
 #[derive(Serialize, Deserialize, Default, PartialEq, Clone, Debug)]
 pub enum SwapMode {
     #[default]
